@@ -33,10 +33,10 @@ ENV RUSTFLAGS="-C target-feature=-crt-static"
 EXPOSE 4000
 
 ENV MIX_ENV="prod"
-ENV SOCKET_ROOT="/xdai/aox"
-ENV NETWORK_PATH="/xdai/aox"
-ENV CHAIN_ID="200"
-ENV COIN_NAME="xDai"
+ENV SOCKET_ROOT="/"
+ENV NETWORK_PATH="/"
+ENV CHAIN_ID="701"
+ENV COIN_NAME="MrFOX"
 
 # Cache elixir deps
 ADD mix.exs mix.lock ./
@@ -51,7 +51,7 @@ ADD . .
 
 ARG COIN
 RUN if [ "$COIN" != "" ]; then \
-        sed -i s/"POA"/"${COIN}"/g apps/block_scout_web/priv/gettext/en/LC_MESSAGES/default.po; \
+        sed -i s/"xDai"/"${COIN}"/g apps/block_scout_web/priv/gettext/en/LC_MESSAGES/default.po; \
         sed -i "/msgid \"Ether\"/{n;s/msgstr \"\"/msgstr \"${COIN}\"/g}" apps/block_scout_web/priv/gettext/default.pot; \
         sed -i "/msgid \"Ether\"/{n;s/msgstr \"\"/msgstr \"${COIN}\"/g}" apps/block_scout_web/priv/gettext/en/LC_MESSAGES/default.po; \
         sed -i "/msgid \"ETH\"/{n;s/msgstr \"\"/msgstr \"${COIN}\"/g}" apps/block_scout_web/priv/gettext/default.pot; \
