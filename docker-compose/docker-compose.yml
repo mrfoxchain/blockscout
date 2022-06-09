@@ -18,12 +18,12 @@ services:
   blockscout:
     depends_on:
       - db
-    image: blockscout/blockscout-fox:${DOCKER_TAG:-latest}
+    image: domecloud/exp-mrfox:${DOCKER_TAG:-latest}
     build:
       context: ..
       dockerfile: ./docker/Dockerfile
       args:
-        COIN: "MrFOX"
+        COIN: "FOX"
     restart: always
     container_name: 'blockscout'
     links:
